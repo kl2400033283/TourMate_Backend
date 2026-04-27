@@ -6,7 +6,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/cities")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://tour-mate-frontend.vercel.app")
 public class CityController {
 
     @GetMapping("/{cityName}")

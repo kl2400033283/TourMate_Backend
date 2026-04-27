@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/guide")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://tour-mate-frontend.vercel.app")
 public class GuideController {
 
     @Autowired
