@@ -1,10 +1,20 @@
-FROM eclipse-temurin:21-jdk
+# -------- BUILD STAGE --------
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
 COPY . .
 
-RUN apt-get update && apt-get install -y maven
-RUN mvn clean install -DskipTests
+RUN mvn clean package -DskipTests
 
-CMD ["java", "-jar", "target/FSDproject-0.0.1-SNAPSHOT.jar"]
+# -------- RUN STAGE --------
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+
+# Copy generated jar (auto-detect)
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "app.jar"]
