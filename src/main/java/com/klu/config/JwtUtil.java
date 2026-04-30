@@ -35,7 +35,7 @@ public class JwtUtil {
                 .getSubject();
     }
 
-    // 🔥 ADD THIS (FIX)
+   
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()

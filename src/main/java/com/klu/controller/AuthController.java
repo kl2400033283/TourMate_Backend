@@ -19,13 +19,13 @@ public class AuthController {
     @Autowired
     private AuthService service;
 
-    // ✅ SIGNUP
+    //  SIGNUP
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody User user) {
         return ResponseEntity.ok(service.signup(user));
     }
 
-    // ✅ LOGIN
+    //  LOGIN
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(
@@ -33,7 +33,7 @@ public class AuthController {
         );
     }
 
-    // ✅ GOOGLE LOGIN
+    //  GOOGLE LOGIN
     @PostMapping("/google-login")
     public ResponseEntity<?> googleLogin(@RequestBody Map<String, String> data) {
         return ResponseEntity.ok(
@@ -41,13 +41,13 @@ public class AuthController {
         );
     }
 
-    // ✅ SEND OTP
+    //  SEND OTP
     @PostMapping("/forgot-password")
     public ResponseEntity<?> forgot(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(service.sendOtpForReset(request.getEmail()));
     }
 
-    // ✅ VERIFY OTP
+    //  VERIFY OTP
     @PostMapping("/verify-otp")
     public ResponseEntity<?> verify(@RequestBody Map<String, String> body) {
         return ResponseEntity.ok(
@@ -55,7 +55,7 @@ public class AuthController {
         );
     }
 
-    // ✅ RESET PASSWORD
+    //  RESET PASSWORD
     @PostMapping("/reset-password")
     public ResponseEntity<?> reset(@RequestBody Map<String, String> body) {
         return ResponseEntity.ok(

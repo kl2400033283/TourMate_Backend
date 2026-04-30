@@ -26,7 +26,7 @@ public class AuthService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // ✅ SIGNUP
+    //  SIGNUP
     public String signup(User user) {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             return "User already exists";
@@ -53,7 +53,7 @@ public class AuthService {
         return "Signup successful";
     }
 
-    // ✅ LOGIN
+    //  LOGIN
     public LoginResponse login(String email, String password) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -74,7 +74,7 @@ public class AuthService {
         return new LoginResponse(user.getId(), token, user.getRole().toLowerCase(), user.getEmail(), user.getName(), user.getCity(), false);
     }
 
-    // ✅ GOOGLE LOGIN
+    //  GOOGLE LOGIN
     public LoginResponse loginWithGoogle(String email, String name, String role) {
         Optional<User> existingUser = userRepository.findByEmail(email);
         User user;
@@ -96,7 +96,7 @@ public class AuthService {
         return new LoginResponse(user.getId(), token, user.getRole().toLowerCase(), user.getEmail(), user.getName(), user.getCity(), true);
     }
 
-    // ✅ SEND OTP
+    //  SEND OTP
     public String sendOtpForReset(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -109,7 +109,7 @@ public class AuthService {
         return "OTP sent to email";
     }
 
-    // ✅ VERIFY OTP
+    //  VERIFY OTP
     public String verifyOtp(String email, String otp) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -120,7 +120,7 @@ public class AuthService {
         return "OTP verified";
     }
 
-    // ✅ RESET PASSWORD
+    //  RESET PASSWORD
     public String resetPassword(String email, String newPassword) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));

@@ -58,20 +58,20 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ ROBUST CORS CONFIG
+    //  ROBUST CORS CONFIG
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
         
-        // ✅ Using allowedOriginPatterns is more robust for modern Vite/React setups
+        //  Using allowedOriginPatterns is more robust for modern Vite/React setups
         config.setAllowedOriginPatterns(Arrays.asList(
         		 "http://localhost:5173",
         	        "https://tour-mate-frontend.vercel.app" // Vite sometimes uses 127.0.0.1 instead of localhost
         )); 
         
-        // ✅ Explicitly defining headers and methods prevents pre-flight (OPTIONS) blocks
+        //  Explicitly defining headers and methods prevents pre-flight (OPTIONS) blocks
         config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
