@@ -44,7 +44,11 @@ public class AuthController {
     //  SEND OTP
     @PostMapping("/forgot-password")
     public ResponseEntity<?> forgot(@RequestBody LoginRequest request) {
-        return ResponseEntity.ok(service.sendOtpForReset(request.getEmail()));
+        try {
+            return ResponseEntity.ok(service.sendOtpForReset(request.getEmail()));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
     }
 
     //  VERIFY OTP

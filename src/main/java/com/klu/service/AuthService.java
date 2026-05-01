@@ -105,7 +105,11 @@ public class AuthService {
         user.setOtp(otp);
         userRepository.save(user);
 
-        emailService.sendOtp(email, otp);
+        try {
+            emailService.sendOtp(email, otp);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to send OTP email: " + e.getMessage());
+        }
         return "OTP sent to email";
     }
 
