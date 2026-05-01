@@ -16,7 +16,9 @@ public class BookingService {
     private com.klu.repository.UserRepository userRepository;
 
     public List<Booking> getBookingsByEmail(String email) {
-        return repository.findByTouristEmail(email);
+        List<Booking> bookings = repository.findByTouristEmail(email);
+        bookings.forEach(b -> b.setEmail(b.getTouristEmail()));
+        return bookings;
     }
 
     public Booking create(Booking booking) {
@@ -25,7 +27,9 @@ public class BookingService {
     }
 
     public List<Booking> getAll() {
-        return repository.findAll();
+        List<Booking> bookings = repository.findAll();
+        bookings.forEach(b -> b.setEmail(b.getTouristEmail()));
+        return bookings;
     }
 
     public Booking update(Long id, Booking updated) {

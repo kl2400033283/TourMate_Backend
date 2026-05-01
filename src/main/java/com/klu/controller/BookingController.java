@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookings")
-@CrossOrigin(origins = "https://tour-mate-frontend.vercel.app")
+@CrossOrigin(origins = {"https://tour-mate-frontend.vercel.app", "http://localhost:5173"})
 public class BookingController {
 
     @Autowired
