@@ -15,6 +15,7 @@ public class EmailService {
     public void sendOtp(String to, String otp) {
 
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("mandru.brahmani@gmail.com");
         message.setTo(to);
         message.setSubject("Password Reset OTP");
         message.setText("Your OTP is: " + otp);
