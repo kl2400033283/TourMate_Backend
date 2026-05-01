@@ -68,7 +68,9 @@ public class SecurityConfig {
         //  Using allowedOriginPatterns is more robust for modern Vite/React setups
         config.setAllowedOriginPatterns(Arrays.asList(
         		 "http://localhost:5173",
-        	        "https://tour-mate-frontend.vercel.app" // Vite sometimes uses 127.0.0.1 instead of localhost
+        		 "http://localhost:5174",
+        		 "http://127.0.0.1:5173",
+        	        "https://tour-mate-frontend.vercel.app"
         )); 
         
         //  Explicitly defining headers and methods prevents pre-flight (OPTIONS) blocks
